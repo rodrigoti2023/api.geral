@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h3>Trabalho API</h3>        
+        
+    
+        <form action="">
+            <input type="text" name="DDD" id="DDD" placeholder="Digite O DDD">
+            
+            <input type="submit"value="Salvar" > 
+
+        </form>
+        <div id="estado">
+        
+        </div>
+    </div>   
+        
+    
+
+    <script src="script.js">
+const nomeDDD=document.getElementById("DDD");
+const form=document.querySelector("form");
+const estadoDiv=document.getElementById("estado");
+console.log(nomeDDD);
+
+
+form.addEventListener("submit", function(event){
+    event.preventDefault();
+    console.log(nomeDDD.value);
+
+    fetch(`https://brasilapi.com.br/api/ddd/v1/${nomeDDD.value}`)
+    .then(response => response.json())
+    .then(result => {             
+        const estado=`Este DDD pertence ao Estado ${result.state}`;
+        const p=document.createElement("p");
+        p.innerHTML=estado;
+        estadoDiv.innerHTML="";
+        estadoDiv.appendChild(p);
+
+        
+    })
+    .catch(error => console.log('error', error));
+});
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="1.html">Questão 1</a>
+            <a href="2.html">Questão 2</a>
+            <a href="3.html">Questão 3</a>
+            <a href="4.html">Questão 4</a>
+            <a href="5.html">Questão 5</a>
+            <a href="6.html">Questão 6</a>
+            <a href="7.html">Questão 7</a>
+            <a href="8.html">Questão 8</a>
+        </nav>
+        <p>
+        Faça um código JS de um jogo onde o usuário 
+        tem que adivinhar em 10 tentativas o número sorteado (de 1 a 10).Caso o usuário erre,
+        o jogo deve informar se o número sorteado é maior ou menor
+        </p>
+        <input type="number" id="n" min="1" max="100" step="1" placeholder="Escreva o número">
+        <br>
+        <p id="resposta"></p>
+        <button>adivinhar o número</button>
+    </div>
+    <script>
+        // elementos
+        let n = document.getElementById("n");
+        let resposta = document.getElementById("resposta");
+        let botao = document.querySelector("button");
+
+        let sorteio = 0;
+        let tentativas = 0;
+        function reset(){
+            //comando que faz o sorteio altomaticamente
+            sorteio = Math.ceil(Math.random() * 100);
+            console.log(sorteio);
+            tentativas = 10;
+            botao.innerHTML = `Você tem ${tentativas} tentativas`;
+        }
+        //quando a pagina for carregada
+        reset();
+
+        //quando clicar no botao
+        botao.addEventListener("click", ()=>{
+            tentativas--;
+            if(tentativas>0){
+                botao.innerHTML = `Você tem ${tentativas} tentativas`;
+                //continuação do jogo
+
+                if(n.value == sorteio){
+                    resposta.innerHTML = "Você acertou";
+                    tentativas = 0;
+                    n.value = "";
+                    return
+                }    
+
+                if(n.value != sorteio){
+                    if(n.value < sorteio){
+                        resposta.innerHTML = "É menor";
+                    }
+                if(n.value > sorteio){
+                    resposta.innerHTML = "É maior";
+
+                }
+
+            }
+            }
+            if(tentativas==0){
+
+            }
+            if(tentativas < 0){
+                reset();
+            }
+        });
+    </script>
+</body>
+</html>

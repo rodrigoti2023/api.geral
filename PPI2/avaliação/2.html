@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <a href="1.html">Questão 1</a>
+            <a href="2.html">Questão 2</a>
+            <a href="3.html">Questão 3</a>
+            <a href="4.html">Questão 4</a>
+            <a href="5.html">Questão 5</a>
+            <a href="6.html">Questão 6</a>
+            <a href="7.html">Questão 7</a>
+            <a href="8.html">Questão 8</a>
+        </nav>
+        <p>Faça um código JS que, ao digitar dois números e clicar no botão, exiba as quatro operações com estes
+            valores. Evite divisão por zero.</p>
+        <p>Dica: Talvez seja necessário conversão de String para Int. Exemplo:</p>
+        <pre><code>
+                let a = 10;
+                let b = "5";            
+                console.log( a+b ); // imprime 105
+                let c = parseInt(b);
+                console.log( a+c ) // imprime 15
+            </code></pre>
+        <h3>Entradas:</h3>
+        <input type="number" id="a" placeholder="input a">
+        <br>
+        <input type="number" id="b" placeholder="input b">
+        <br>
+        <h3>Respostas:</h3>
+        <input type="text" id="soma" placeholder="soma">
+        <br>
+        <input type="text" id="subtracao" placeholder="subtração">
+        <br>
+        <input type="text" id="multiplicacao" placeholder="multiplicação">
+        <br>
+        <input type="text" id="divisao" placeholder="divisão">
+        <button>calcular</button>
+        <script>
+
+            // pegamos os 3 elementos HTML
+            let a = document.querySelector("#a");
+            let b = document.querySelector("#b");
+            let botao = document.querySelector("button");
+            let soma = document.getElementById("soma");
+            let subtracao = document.getElementById("subtracao");
+            let multiplicacao = document.getElementById("multiplicacao");
+            let divisao = document.getElementById("divisao");
+
+            // associamos o evento ao botão
+            botao.addEventListener("click", ()=>{
+                //soma.valeu =a.value + b.value;
+                let n1 = parseFloat(a.valeu);
+                let n2 = parseFloat(b.valeu);
+                soma.value = n1+n2
+                subtracao.valeu = n1 - n2;
+                multiplicacao.value = n1 * n2;
+                if(b.value == 0){
+                    divisao.value = " divisão por zero";
+                }
+                else{
+                    divisao.value = n1/n2;
+                }
+                
+            });
+
+        </script>
+    </div>
+</body>
+
+</html>
